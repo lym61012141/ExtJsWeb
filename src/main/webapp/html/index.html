@@ -1,0 +1,138 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="../static/theme-classic/resources/theme-classic-all-debug.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript" src="../static/js/ext-all.js"></script>
+
+    <script type="text/javascript">
+
+        //加载
+        Ext.onReady(function() {
+            //创建第一个基础面板，并直接展示
+            Ext.create('Ext.Panel', {
+                renderTo: 'helloWorldPanel',
+                height: 200,
+                width: 600,
+                title: 'Hello world',
+                html: '我的第一个 ExtJs6.5.2 基础面板'
+            });
+
+            //Ext.panel.Panel start
+            var childPanel1 = Ext.create('Ext.Panel',{
+                title:'first panel',
+                html:'第一个panel.Panel面板'
+            });
+
+            var childPanel2 = Ext.create('Ext.Panel',{
+                title:'second panel',
+                html:'第二个panel.Panel面板'
+            });
+            Ext.create('Ext.panel.Panel',{
+                renderTo:Ext.getBody(),
+                height:'100',
+                width:'600',
+                border : true,
+                frame:true,
+                items:[
+                    childPanel1,childPanel2
+                ]
+            });
+            //Ext.panel.Panel end
+
+            //Ext.form.Panel start
+            var childFormPanel1 = Ext.create('Ext.Panel',{
+                title:'first form panel',
+                html:'第一个Ext.form.Panel面板'
+            });
+            var childFormPanel2 = Ext.create('Ext.Panel',{
+                title:'first form panel',
+                html:'第二个Ext.form.Panel面板'
+            });
+            Ext.create('Ext.form.Panel', {
+                renderTo: Ext.getBody(),
+                height:'100',
+                width:'600',
+                border:true,
+                frame:true,
+                items:[
+                    childFormPanel1,childFormPanel2
+                ]
+            });
+            //Ext.form.Panel end
+
+            //Ext.tab.Panel start
+            var childTabPanel1 = Ext.create('Ext.Panel',{
+                title:'first tabPanel',
+                html:'first Ext.tab.Panel'
+            });
+            var childTabPanel2 = Ext.create('Ext.Panel',{
+                title:'second tabPanel',
+                html:'second Ext.tab.Panel'
+            });
+            Ext.create('Ext.tab.Panel',{
+                renderTo:Ext.getBody(),
+                height:'100',
+                width:'600',
+                border:true,
+                frame:true,
+                items:[
+                    childTabPanel1,childTabPanel2
+                ]
+            });
+            //Ext.tab.Panel end
+        });
+    </script>
+
+
+<!--Components inside Container-->
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            //Ext.container.Viewport start
+            var childViewport1 = Ext.create('Ext.panel.Panel',{
+                title:'first Ext.container.Viewport',
+                html:'hello Ext.container.Viewport,myfirst viewport',
+            });
+            var childViewport2 = Ext.create('Ext.panel.Panel',{
+                title:'second Ext.container.Viewport',
+                html:'second Viewport'
+            });
+            Ext.create('Ext.container.Viewport',{
+                renderTo:Ext.getBody(),
+                border:true,
+                frame:true,
+                items:[
+                    childViewport1,childViewport2
+                ]
+            });
+
+
+            var component1 = Ext.create('Ext.Component', {
+                html:'First Component'
+            });
+
+            var component2 = Ext.create('Ext.Component', {
+                html: 'Second Component'
+            });
+
+            var component3 = Ext.create('Ext.Component', {
+                html: 'Third Component'
+            });
+
+            Ext.create('Ext.container.Container', {
+                renderTo: Ext.getBody(),
+                title: 'Container',
+                border: 1,
+                width: '600',
+                style: {borderStyle: 'solid', borderWidth: '2px' },
+                items: [component1, component2,  component3]
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="helloWorldPanel"></div>
+</body>
+</html>

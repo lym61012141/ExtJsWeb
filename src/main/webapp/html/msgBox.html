@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="../static/css/theme-classic-all-debug.css"/>
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function() {
+           Ext.create('Ext.Button',{
+              renderTo:Ext.getElementById('msgBox'),
+              text:'Click me',
+              listeners:{
+                  click:function () {
+                      /*弹出框*/
+//                      Ext.Msg.alert('警告','基础消息框');
+                      //确认框
+                      /*Ext.MessageBox.confirm('confirmBox','选择执行过程？',callbackFunction);
+                      function callbackFunction(btn) {
+                          if(btn=='yes') {//只能写成英文，否则无法判断
+                              Ext.Msg.alert('确认','点击了确认');
+                          }else {
+                              Ext.Msg.alert('取消','点击了取消');
+                          }
+                      };*/
+                      //消息输入框
+                      /*Ext.Msg.prompt('name', '请输入名字',function (btn,text) {
+                          if(btn=='ok'){
+                              Ext.Msg.alert('Hello', 'hello,' + text);
+                          }
+                      })*/
+
+                      //多行消息输入
+                      Ext.MessageBox.show({
+                          title:'Details',
+                          msg:'请输入你的描述信息:',
+                          width:300,
+                          buttons:Ext.MessageBox.OKCANCEL,
+                          multiline:true,
+                          fn:callbackFunction
+                      });
+                      function callbackFunction(btn) {
+                          if(btn=='ok'){
+
+                              Ext.Msg.alert('status','描述信息输入成功');
+                          }else {
+                              Ext.Msg.alert('status','描述信息输入已取消');
+                          }
+                      }
+
+                  }
+              }
+           });
+        });
+    </script>
+</head>
+<body>
+<div id = "msgBox"></div>
+</body>
+</html>

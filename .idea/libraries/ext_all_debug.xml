@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ext-all-debug" type="kotlin.js">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../MyExtJs/src/main/webapp/static/js/ext-all-debug.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

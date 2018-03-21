@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="../static/theme-classic/resources/theme-classic-all-debug.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript" src="../static/js/ext-all.js"></script>
+
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            win = new Ext.Window({
+                title:'Email Window',
+                layout:'form',
+                width:400,
+                closeAction:'close',
+                target : document.getElementById('buttonId'),
+                plain: true,
+                items: [{
+                    xtype : 'textfield',
+                    fieldLabel: 'To'
+                },{
+                    xtype : 'textfield',
+                    fieldLabel: 'CC'
+                },{
+                    xtype : 'textfield',
+                    fieldLabel: 'BCC'
+                },{
+                    xtype : 'textfield',
+                    fieldLabel: 'Subject'
+                },{
+                    xtype : 'textarea',
+                    fieldLabel: 'Email Message'
+                }],
+                buttons: [{
+                    text: 'Save Draft',
+                    handler: function(){Ext.Msg.alert('Save Draft', 'Your msg is saved');}
+                },{
+                    text: 'Send',
+                    handler: function(){Ext.Msg.alert('Message Sent', 'Your msg is sent');}
+                },{
+                    text: 'Cancel',
+                    handler: function(){win.close(); Ext.Msg.alert('close', 'Email window is closed');}
+                }],
+                buttonAlign: 'center',
+            });
+            Ext.create('Ext.Button', {
+                renderTo: Ext.getElementById('buttonId'),
+                text: 'Click Me',
+                listeners: {
+                    click: function() {
+                        win.show();
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id = "buttonId"></div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="../static/theme-classic/resources/theme-classic-all-debug.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript" src="../static/js/ext-all.js"></script>
+
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.create('Ext.container.Viewport', {
+                layout: 'border',
+                items: [
+                    {
+                        region: 'north',
+                        title: 'header',
+                        border: 'false',
+                        margin: '0 0 0 0'
+                    }, {
+                        region: 'west',
+                        collapsible: true,
+                        title: '左侧边栏',
+                        html: '导航区',
+                        width: '150'
+                    }, {
+                        region: 'south',
+                        collapsible: true,
+                        title: 'footer',
+                        height: '50',
+                        width: '100%'
+                    }, {
+                        region: 'east',
+                        collapsible: false,
+                        title: '功能区',
+                        html: 'feature',
+                        width: '300'
+                    }, {
+                        region: 'center',
+                        xtype: 'tabpanel',
+                        items: [
+                            {
+                                title: 'default tab',
+                                html:'the first tab'
+                            }, {
+                                title: 'default tab',
+                                html:'the second tab'
+                            }
+                        ]
+                    }
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="editorId"></div>
+</body>
+</html>

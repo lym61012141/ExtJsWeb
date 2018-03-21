@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="../static/css/theme-classic-all-debug.css"/>
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.create('Ext.form.Panel', {
+                id: 'newForm',
+                renderTo: 'formId',
+                border: true,
+                width: 600,
+                items: [{
+                    xtype: 'textfield',
+                    fieldLabel: 'Text Field'
+                },{
+                    xtype: 'displayfield',
+                    fieldLabel: 'Display Field'
+                },{
+                    xtype: 'textarea',
+                    fieldLabel: 'Text Area'
+                },{
+                    xtype: 'datefield',
+                    fieldLabel: 'Date picker'
+                },{
+                    xtype: 'button',
+                    text: 'Button'
+                },{
+                    xtype: 'fieldcontainer',
+                    fieldLabel: 'Radio field',
+                    defaultType: 'radiofield',
+                    defaults: {
+                        flex: 1
+                    },
+                    layout: 'hbox',
+                    items: [{
+                        boxLabel: 'A',
+                        inputValue: 'a',
+                        id: 'radio1'
+                    },{
+                        boxLabel: 'B',
+                        inputValue: 'b',
+                        id: 'radio2'
+                    },{
+                        boxLabel: 'C',
+                        inputValue: 'c',
+                        id: 'radio3'
+                    }]
+                },{
+                    xtype: 'fieldcontainer',
+                    fieldLabel: 'Check Box Field',
+                    defaultType: 'checkboxfield',
+                    items: [{
+                        boxLabel: 'HTML',
+                        inputValue: 'html',
+                        id: 'checkbox1'
+                    },{
+                        boxLabel: 'CSS',
+                        inputValue: 'css',
+                        checked: true,
+                        id: 'checkbox2'
+                    },{
+                        boxLabel: 'JavaScript',
+                        inputValue: 'js',
+                        id: 'checkbox3'
+                    }]
+                },{
+                    xtype: 'hiddenfield',
+                    name: 'hidden field ',
+                    value: 'value from hidden field'
+                },{
+                    xtype: 'numberfield',
+                    anchor: '100%',
+                    fieldLabel: 'Numeric Field',
+                    maxValue: 99,
+                    minValue: 0
+                },{
+                    xtype: 'spinnerfield',
+                    fieldLabel: 'Spinner Field',
+                    step: 6,
+                    // override onSpinUp (using step isn't neccessary)
+                    onSpinUp: function() {
+                        var me = this;
+                        if (!me.readOnly) {
+                            var val = me.step; // set the default value to the step value
+                            if(me.getValue() !== '') {
+                                val = parseInt(me.getValue().slice(0, -5)); // gets rid of " Pack"
+                            }
+                            me.setValue((val + me.step) + ' Pack');
+                        }
+                    },
+
+                    // override onSpinDown
+                    onSpinDown: function() {
+                        var me = this;
+                        if (!me.readOnly) {
+                            if(me.getValue() !== '') {
+                                val = parseInt(me.getValue().slice(0, -5)); // gets rid of " Pack"
+                            }
+                            me.setValue((val - me.step) + ' Pack');
+                        }
+                    }
+                },{
+                    xtype: 'timefield',
+                    fieldLabel: 'Time field',
+                    minValue: '6:00 AM',
+                    maxValue: '8:00 PM',
+                    increment: 30,
+                    anchor: '100%'
+                },{
+                    xtype: 'combobox',
+                    fieldLabel: 'Combo Box',
+                    store: Ext.create('Ext.data.Store', {
+                        fields: ['abbr', 'name'],
+                        data: [{
+                            'abbr': 'HTML',
+                            'name': 'HTML'
+                        },{
+                            'abbr': 'CSS',
+                            'name': 'CSS'
+                        },{
+                            'abbr': 'JS',
+                            'name': 'JavaScript'
+                        }]
+                    }),
+                    valueField: 'abbr',
+                    displayField: 'name'
+                },{
+                    xtype: 'filefield',
+                    fieldLabel: 'File field',
+                    labelWidth: 50,
+                    msgTarget: 'side',
+                    allowBlank: false,
+                    anchor: '100%',
+                    buttonText: 'Select File...'
+                }]
+            });
+        });
+
+
+
+        /*Ext.onReady(function () {
+            Ext.create('Ext.form.Panel',{
+                id:'newForm',
+                renderTo:'formId',
+                width:600,
+                border:true,
+                items:[{
+                    xtype: 'textfield',
+                    fieldLabel: 'Text field'
+                },{
+                    xtype:'dispalyfield',
+                    fieldLable:'displayfield'
+                },{
+                    xtype:'textarea',
+                    fieldLabel:'textarea'
+                },{
+                    xtype:'datafield',
+                    fieldLabel:'datafield'
+                },{
+                    xtype:'button',
+                    text:'Button'
+                }
+
+                ]
+            });
+
+        });*/
+    </script>
+</head>
+<body>
+<div id = "formId"></div>
+</body>
+</html>

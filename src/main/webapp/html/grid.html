@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一个比较完整的表格展示数据的页面</title>
+    <link rel="stylesheet" href="../static/css/theme-classic-all-debug.css"/>
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript">
+        // 创建一个Store类，当mapping映射的名字和字段名字相同，则可以省略，这里可以不写,字段如果初始不定义类型，默认类型为auto
+        Ext.define('StudentDataModel', {
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'name', mapping: 'name'},
+                {name: 'age', mapping: 'age'},
+                {name: 'marks', mapping: 'marks',type:'int'},//不加type:'int' 无法使用grid的sort正确排序
+                {name: 'desc', mapping: 'desc'}
+            ]
+        });
+
+        Ext.onReady(function () {
+            // 创建一个数据存储对象 Store data
+            var myData = [
+                {name: 'jack', age: "16", marks: "90"},
+                {name: "Tom", age: "17", marks: "83"},
+                {name: "Rose", age: "18", marks: "75"},
+                {name: "Lili", age: "19", marks: "60"},
+                {name: "Jobs", age: "20", marks: "100"},
+                {name: "Hanhan", age: "21", marks: "70"}
+            ];
+
+            /*
+                标准文档通过ajax，url传值
+                var store = Ext.create('Ext.data.Store', {
+                        model: 'StudentDataModel',
+                        proxy: {
+                            type: 'ajax',
+                            url : '/StudentDataModel.json',
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'StudentDataModel'
+                            }
+                        }
+                    });
+            */
+            //grid store，创建一个StudentDataModel数据类，并传入值myData
+            var gridStore = Ext.create('Ext.data.Store', {
+                model: 'StudentDataModel',
+                data: myData
+            });
+
+            // grid
+            Ext.create('Ext.grid.Panel', {
+                id: 'gridId',
+                store: gridStore,
+                stripeRows: 'true',//切换奇偶行颜色
+                title: 'Students Grid',
+                renderTo: 'gridDiv',
+                width: 600,
+                collapsible: true,//是否可折叠
+                enableColumnMove: true,//表格是否可移动
+                enableColumnResize: true,//表格大小是否可调
+                columns:
+                    [{
+                        text: "Student Name",
+                        dataIndex: 'name',
+                        id: "name",
+                        flex: 1,
+                        sortable: true,
+                        hideable: true
+                    }, {
+                        text: "Age",
+                        dataIndex: 'age',
+                        flex: .5,
+                        sortable: true,
+                        hideable: true
+                    }, {
+                        text:'Marks',
+                        dataIndex:'marks',
+                        flex:.5,
+                        sortable:true,
+                        hideable:false
+                    },{
+                        text: "Desc",
+                        dataIndex: 'marks',
+                        flex: .5,
+                        sortable: true,
+                        renderer: function (value, metadata, record, rowIndex, colIndex, store) {
+                            if (value >= 80) {
+                                return "优";
+                            } else if(value<80&&value>=70) {
+                                return "良";
+                            }else{
+                                return "差";
+                            }
+                        }
+                    }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="gridDiv"></div>
+</body>
+</html>

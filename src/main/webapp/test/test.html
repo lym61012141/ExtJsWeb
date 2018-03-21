@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="../static/theme-classic/resources/theme-classic-all-debug.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <!--
+        <script type="text/javascript" src="../static/js/ext-all.js"></script>
+    -->
+
+    <script type="text/javascript">
+        Ext.onReady(function () {
+
+
+            Ext.define('KitchenSink.view.panel.BasicPanels', {
+                extend: 'Ext.Container',
+                xtype: 'basic-panels',
+                width: 660,
+                requires: [
+                    'Ext.layout.container.Table'
+                ],
+
+                layout: {
+                    type: 'table',
+                    columns: 3,
+                    tdAttrs: {style: 'padding: 10px; vertical-align: top;'}
+                },
+
+                defaults: {
+                    xtype: 'panel',
+                    width: 200,
+                    height: 280,
+                    bodyPadding: 10
+                },
+
+                initComponent: function () {
+                    this.items = [
+                        {
+                            html: KitchenSink.view.panel.BasicPanels
+                        },
+                        {
+                            title: 'Title',
+                            html: KitchenSink.view.panel.BasicPanels
+                        },
+                        {
+                            title: 'Collapsible',
+                            collapsible: true,
+                            html: 'KitchenSink.DummyText.mediumText'
+                        },
+                        {
+                            title: 'Tools',
+                            collapsed: true,//true 默认闭合，false默认展开
+                            collapsible: false,
+                            width: 1200,
+                            html: 'KitchenSink.DummyText.mediumText',
+                            tools: [
+                                {type: 'pin'},
+                                {type: 'refresh'},
+                                {type: 'search'},
+                                {type: 'save'}
+                            ],
+                            colspan: 3
+                        }
+                    ];
+
+                    this.callParent();
+                }
+            });
+
+            Ext.create('KitchenSink.view.panel.BasicPanels', {
+                renderTo:'panel'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="panel"></div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--主题-->
+    <link rel="stylesheet" href="../static/css/theme-classic-all.css">
+    <!--开发测试-->
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <!--线上-->
+    <!--<script type="text/javascript" src="../static/js/ext-all.js"></script>-->
+    <title>布局</title>
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.create('Ext.panel.Panel', {
+                renderTo : Ext.getBody(),
+                layout : {
+                    type :'vbox',
+                    align: 'stretch'
+                },
+                requires: ['Ext.layout.container.VBox'],
+                xtype: 'layout-vertical-box',
+                width : 600,
+                height :400,
+                frame :true,
+                items : [{
+                    title: 'Panel 1',
+                    html : 'Panel with flex 1',
+                    margin: '0 0 10 0',
+                    flex : 1
+                },{
+                    title: 'Panel 2',
+                    html : 'Panel with flex 2',
+                    margin: '0 0 10 0',
+                    flex : 2
+                },{
+                    title: 'Panel 3',
+                    flex : 2,
+                    margin: '0 0 10 0',
+                    html : 'Panel with flex 2'
+                },{
+                    title: 'Panel 4',
+                    html : 'Panel with flex 1',
+                    margin: '0 0 10 0',
+                    flex : 1
+                }]
+            });
+        });
+    </script>
+
+
+    <!--column-->
+    <!--<script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.create('Ext.panel.Panel', {
+                renderTo: Ext.getBody(),
+                layout:'column',
+                xtype: 'layout-column',
+                requires: ['Ext.layout.container.Column'],
+                width: '50%',
+                items: [{
+                    title: 'col 1',
+                    html: 'This is First Component',
+                    columnWidth: 0.3
+
+                }, {
+                    title: 'col 2',
+                    html: 'This is second Component',
+                    columnWidth: 0.3
+                }, {
+                    title: 'col 3',
+                    html: 'This is third Component',
+                    columnWidth: 0.4
+                }
+
+                ]
+
+            });
+        });
+    </script>-->
+
+
+    <!--绝对布局-->
+    <!--<script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.create('Ext.container.Container', {
+                renderTo: Ext.getBody(),
+                layout: 'absolute',
+                items: [{
+                    title: 'panel 1',
+                    x: 0,
+                    y: 0,
+                    html:'first',
+                    height:100,
+                    width:600
+                }, {
+                    title: 'panel 2',
+                    x: 600,
+                    y: 100,
+                    html:'second',
+                    height:100,
+                    width:600
+                }
+                ]
+            });
+        });
+    </script>-->
+    <!--tab 顶部标签-->
+    <!--<script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.create('Ext.tab.Panel', {
+                renderTo: Ext.getBody(),
+                requires: ['Ext.layout.container.Card'],
+                xtype: 'layout-cardtabs',
+                height: 200,
+                width: 600,
+                items: [{
+                    title: 'tab 1',
+                    html: 'first tab'
+                }, {
+                    title: 'tab 2',
+                    html: 'second tab'
+                }, {
+                    title: 'tab 3',
+                    html: 'third tab'
+                }]
+            });
+        });
+    </script>-->
+
+    <!--<script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.create('Ext.panel.Panel', {
+                renderTo: Ext.getBody(),
+                requires: [
+                    'Ext.layout.container.Card'],
+                layout: 'card',
+                width: 600,
+                height: 200,
+                bodyPadding: 15,
+                defaults: {
+                    border:false
+                },
+                defaultListenerScope: true,
+                bbar: ['->',
+                    {
+                        itemId: 'card-prev',
+                        text: '« Previous',
+                        handler: 'showPrevious',
+                        disabled: true
+                    },{
+                        itemId: 'card-next',
+                        text: 'Next »',
+                        handler: 'showNext'
+                    }],
+
+                items: [{
+                    id: 'card0',
+                    html: '<h2> This is card wizard layout </h2> <p> This is first card </p> <p> Please click the "Next" button to continue... </p>'
+                },{
+                    id: 'card1',
+                    html: '<p> This is second card </p> <p> Please click the "Next" button for next card and "Previous" button for previous card... </p>'
+                },{
+                    id: 'card2',
+                    html: '<p> This is final card </p> <p> Please click the "Previous" button for previous card... </p>'
+                }],
+
+                showNext: function () {
+                    this.cardPanelNavigation(1);
+                },
+
+                showPrevious: function (btn) {
+                    this.cardPanelNavigation(-1);
+                },
+
+                cardPanelNavigation: function (incr) {
+                    var me = this;
+                    var l = me.getLayout();
+                    var i = l.activeItem.id.split('card')[1];
+                    var next = parseInt(i, 10) + incr;
+                    l.setActiveItem(next);
+                    me.down('#card-prev').setDisabled(next===0);
+                    me.down('#card-next').setDisabled(next===2);
+                }
+            });
+        });
+    </script>-->
+</head>
+
+<body>
+
+</body>
+</html>

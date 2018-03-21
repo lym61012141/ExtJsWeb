@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="../static/theme-classic/resources/theme-classic-all-debug.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/ext-all-debug.js"></script>
+    <script type="text/javascript" src="../static/js/ext-all.js"></script>
+
+    <script type="text/javascript">
+        /*Ext.onReady(function() {
+            toolTip = new Ext.ToolTip({
+                id : 'toolTip',
+                anchor : 'bottom',
+                html : 'This is a basic toolTip',
+                title : 'Tool - Tip Title',
+                closable : true,
+                closeAction : 'hide'
+            });
+            Ext.create('Ext.Button', {
+                renderTo: Ext.getElementById('buttonId'),
+                text: 'Hover Me',
+                listeners: {
+                    mouseover: function() {
+                        toolTip.show();
+                    }
+                }
+            });
+        });
+*/
+        Ext.onReady(function () {
+            Ext.create('Ext.form.FormPanel', {
+                title: 'Sample TextArea',
+                width: '100%',
+                bodyPadding: 10,
+                renderTo: Ext.getBody(),
+                items: [{
+                    xtype: 'textareafield',
+                    grow: true,
+                    name: 'textarea',
+                    fieldLabel: 'h',
+                    height:650,
+                    anchor: '100%'
+                }]
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="buttonId"></div>
+</body>
+</html>
